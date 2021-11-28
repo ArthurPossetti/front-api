@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xml:lang="en"
+      lang="en">
+
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    p {
+        line-height: 1.5;
+        margin: 0;
+    }
+</style>
+
+
+<f:metadata>
+    <f:viewAction action="#{clienteBean.adicionarCliente}"/>
+</f:metadata>
+
+<h:head>
+    <title>Cliente</title>
+    <h:outputScript name="locales/locale-pt.js" library="primefaces"/>
+</h:head>
+<h:body>
+    <h:form style=" ">
+        <ui:include src="menu.xhtml"/>
+        <p:breadCrumb style="">
+            <p:menuitem value="Home"/>
+            <p:menuitem value="Cadastro"/>
+            <p:menuitem value="Clientes" outcome="cliente-listar"/>
+            <p:menuitem value="Novo"/>
+        </p:breadCrumb>
+        <p:card style="">
+            <f:facet name="title">
+                <h2 >Novo Cliente</h2>
+            </f:facet>
+            <p:messages closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+            <h:panelGrid columns="1" style="width: 100%">
+
+                <p:inputText value="#{clienteBean.cliente.USR_EMAIL}" placeholder="E-mail" >
+                    <p:autoUpdate/>
+                </p:inputText>
+
+                <p:password id="toggle" value="#{clienteBean.cliente.USR_SENHA}"  toggleMask="true" redisplay="true" placeholder="Senha" style="width: 192px"/>
+
+
+            </h:panelGrid>
+
+
+            <h:panelGrid columns="12" style="margin-top: 30px ">
+                <p:commandButton value="Salvar" styleClass="ui-button-success"  actionListener="#{clienteBean.salvarCadastro}" icon="pi pi-save"/>
+                <p:button value="Voltar"  icon="pi pi-times"/>
+            </h:panelGrid>
+        </p:card>
+    </h:form>
+
+
+
+</h:body>
+</html>
